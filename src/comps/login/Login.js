@@ -1,7 +1,13 @@
 import React from "react";
-import { useContext, useState, useNavigate } from "react";
+import "./login.css";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/context";
+import { auth } from "../../firebase/firebase.config";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+// Icons:
+import { BsGoogle, BsGithub } from "react-icons/bs";
 
 export default function Login() {
   const { user } = useContext(AuthContext);
@@ -14,24 +20,17 @@ export default function Login() {
 
   if (user) {
     navigate("/");
-    return (
-      <h1 className="text-center mt-5 mb-5">
-        Already signed in. Redirecting to home
-      </h1>
-    );
+    // return (
+    //   <h1 className="text-center mt-5 mb-5">
+    //     Already signed in. Redirecting to home
+    //   </h1>
+    // );
   }
 
   return (
     <section className="login-margin">
       <div className="container-fluid h-custom">
         <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-md-9 col-lg-6 col-xl-5">
-            <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-              className="img-fluid"
-              alt="Sample image"
-            />
-          </div>
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <form>
               <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
@@ -40,19 +39,13 @@ export default function Login() {
                   type="button"
                   className="btn btn-primary btn-floating mx-1"
                 >
-                  <i className="fab fa-facebook-f" />
+                  <BsGoogle />
                 </button>
                 <button
                   type="button"
                   className="btn btn-primary btn-floating mx-1"
                 >
-                  <i className="fab fa-twitter" />
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-primary btn-floating mx-1"
-                >
-                  <i className="fab fa-linkedin-in" />
+                  <BsGithub />
                 </button>
               </div>
               <div className="divider d-flex align-items-center my-4">

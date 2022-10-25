@@ -1,12 +1,19 @@
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/context";
+import { LoggedIn, NotLoggedIn } from "./user.validation";
 
 export default function Navbar() {
+  const { user } = useContext(AuthContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light static-top">
       <div className="container">
-        <a className="navbar-brand" href="#">
-          <img src={require("../../media/logo.png")} alt="..." height={36} />
-        </a>
+        <div className="navbar-brand">
+          <Link to="/">
+            <img src={require("../../media/logo.png")} alt="..." height={36} />
+          </Link>
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -26,15 +33,6 @@ export default function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a
-                className="nav-link text-success "
-                aria-current="page"
-                href="#"
-              >
-                Login
-              </a>
-            </li>
-            <li className="nav-item">
               <a className="nav-link text-dark " aria-current="page" href="#">
                 Blog
               </a>
@@ -44,7 +42,7 @@ export default function Navbar() {
                 FAQ
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item me-5">
               <div className="d-flex flex-row mt-2">
                 <BsFillSunFill className="mt-1 me-1" />
                 <div className="form-check form-switch">
@@ -55,11 +53,15 @@ export default function Navbar() {
                   />
                   <label
                     className="form-check-label"
-                    for="flexSwitchCheckDefault"
+                    // for="flexSwitchCheckDefault"
                   ></label>
                 </div>
                 <BsFillMoonFill className="mt-1 ms-0" />
               </div>
+            </li>
+            <li className="nav-item">
+              {user ? <LoggedIn /> : <NotLoggedIn />}
+              {/* importing React function of user state from user.validation.js*/}
             </li>
             {/* <li className="nav-item dropdown">
               <a
