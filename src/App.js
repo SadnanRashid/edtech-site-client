@@ -6,6 +6,7 @@ import Main from "./layout/Main";
 import Home from "./comps/home/home";
 import Login from "./comps/login/Login";
 import Register from "./comps/register/Register";
+import Courses from "./comps/courses/courses";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +25,10 @@ function App() {
         {
           path: "/register",
           element: <Register></Register>,
+        },
+        {
+          path: "/courses",
+          element: <Courses></Courses>,
         },
       ],
     },

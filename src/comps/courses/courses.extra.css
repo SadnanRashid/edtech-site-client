@@ -1,0 +1,16 @@
+.courses-bread {
+  --bs-breadcrumb-divider: "|";
+  height: 8vh;
+  background-color: rgb(222, 239, 253);
+}
+.margin-bread {
+  margin-left: 5%;
+}
+
+.search-button {
+  border: none;
+}
+
+/* .input-search {
+  border-right: none !important;
+} */
