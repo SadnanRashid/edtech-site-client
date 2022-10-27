@@ -1,0 +1,27 @@
+.courses-bread {
+  --bs-breadcrumb-divider: "|";
+  height: 12vh;
+  background-color: rgb(222, 239, 253);
+  padding-top: 1%;
+}
+.margin-bread {
+  margin-left: 5%;
+}
+.author-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.course-details-overview {
+  width: 70%;
+}
+.course-details-overview-desc {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  border-end-end-radius: 20px;
+  border-end-start-radius: 20px;
+}
+.course-details-image {
+  width: 100%;
+  height: 300px;
+  border-radius: 20px;
+}
