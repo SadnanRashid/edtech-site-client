@@ -7,3 +7,11 @@
 .font-roboto {
   font-family: "Roboto", sans-serif !important;
 }
+
+.font-res-big {
+  font-size: 3vh;
+}
+
+.font-res-small {
+  font-size: 2.5vh;
+}

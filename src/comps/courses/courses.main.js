@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { VscFeedback, VscStarFull, VscSymbolKey } from "react-icons/vsc";
 
 export default function CoursesMain() {
   const { id } = useParams();
   const data = useLoaderData();
+  let text = "";
+  let result = "";
   //
   return (
     <div>
@@ -16,16 +19,22 @@ export default function CoursesMain() {
         {data.map((e) => {
           return (
             <div className="card courses-card me-3 mb-5">
-              <img
-                src="https://is2-ssl.mzstatic.com/image/thumb/Purple115/v4/74/4e/28/744e280a-3e77-2da1-aad7-a133b5305b8e/source/512x512bb.jpg"
-                className="card-img-top"
-              />
+              <img src={e.image} className="card-img-top courses-card-img" />
               <div className="card-body">
-                <h5 className="card-title font-roboto">Card title</h5>
-                <p className="card-text font-roboto">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+                <h5 className="card-title font-roboto font-res-big">
+                  {e.title}
+                </h5>
+                <div className="d-flex flex-row justify-content-between card-middle">
+                  <p className="font-res-small text-muted fw-bold">
+                    <VscFeedback /> {e.sale}
+                  </p>
+                  <p className="font-res-small text-muted fw-bold">
+                    <VscStarFull /> {e.rating}
+                  </p>
+                  <p className="font-res-small text-muted fw-bold">
+                    <VscSymbolKey /> English
+                  </p>
+                </div>
               </div>
             </div>
           );
@@ -48,13 +57,19 @@ function CourseMainSort() {
       </button>
       <ul className="dropdown-menu">
         <li>
-          <a className="dropdown-item">View</a>
+          <a className="dropdown-item" href="#">
+            View
+          </a>
         </li>
         <li>
-          <a className="dropdown-item">Rating</a>
+          <a className="dropdown-item" href="#">
+            Rating
+          </a>
         </li>
         <li>
-          <a className="dropdown-item">Sale</a>
+          <a className="dropdown-item" href="#">
+            Sale
+          </a>
         </li>
       </ul>
     </div>

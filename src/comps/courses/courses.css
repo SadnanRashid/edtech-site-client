@@ -15,4 +15,9 @@
 
 .courses-card {
   width: 31%;
+  height: auto;
+}
+
+.courses-card-img {
+  height: 170px;
 }

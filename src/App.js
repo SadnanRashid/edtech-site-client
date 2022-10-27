@@ -30,9 +30,7 @@ function App() {
           path: "/courses",
           element: <Courses></Courses>,
           loader: () =>
-            fetch(
-              "https://assignment10-server-rose.vercel.app/courses/categories"
-            ),
+            fetch("https://assignment10-server-rose.vercel.app/courses"),
         },
         {
           path: "/courses/:id",
