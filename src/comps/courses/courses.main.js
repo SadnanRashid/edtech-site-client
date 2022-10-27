@@ -18,7 +18,7 @@ export default function CoursesMain() {
       <div className="d-flex flex-row flex-wrap">
         {data.map((e) => {
           return (
-            <div className="card courses-card me-3 mb-5">
+            <div className="card courses-card me-3 mb-5" key={e.id}>
               <img src={e.image} className="card-img-top courses-card-img" />
               <div className="card-body">
                 <h5 className="card-title font-roboto font-res-big">
