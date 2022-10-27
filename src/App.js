@@ -52,7 +52,7 @@ function App() {
         },
         {
           path: "/checkout/:id",
-          element: <CourseDetails></CourseDetails>,
+          element: <Checkout></Checkout>,
           loader: ({ params }) =>
             fetch(
               `https://assignment10-server-rose.vercel.app/courses/get/${params.id}`

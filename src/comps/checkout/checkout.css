@@ -1,0 +1,27 @@
+.card {
+  margin-top: 5%;
+}
+
+.container .h8 {
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.input-checkout {
+  color: white;
+  background-color: #223c60;
+  border: 2px solid transparent;
+  height: 60px;
+  padding-left: 20px;
+  vertical-align: middle;
+}
+
+.input-checkout-text {
+  color: white;
+  background-color: #223c60;
+  border: 2px solid transparent;
+  height: auto;
+  padding-left: 20px;
+  vertical-align: middle;
+}
