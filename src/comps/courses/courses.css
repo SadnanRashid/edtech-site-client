@@ -7,10 +7,12 @@
 .courses-sidebar {
   width: 25%;
   margin-right: 10px;
-  border: 1px solid red;
 }
 
 .courses-main {
   width: 73%;
-  border: 1px solid red;
+}
+
+.courses-card {
+  width: 31%;
 }

@@ -3,6 +3,7 @@ import "./courses.extra.css";
 import React from "react";
 import CoursesBreadcrumbs from "./courses.breadcrumbs";
 import CoursesSidebar from "./courses.sidebar";
+import CoursesMain from "./courses.main";
 
 export default function Courses() {
   return (
@@ -13,7 +14,7 @@ export default function Courses() {
           <CoursesSidebar />
         </div>
         <div className="courses-main">
-          <h1>Course body</h1>
+          <CoursesMain />
         </div>
       </div>
     </div>

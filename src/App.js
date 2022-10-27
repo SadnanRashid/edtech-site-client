@@ -29,6 +29,18 @@ function App() {
         {
           path: "/courses",
           element: <Courses></Courses>,
+          loader: () =>
+            fetch(
+              "https://assignment10-server-rose.vercel.app/courses/categories"
+            ),
+        },
+        {
+          path: "/courses/:id",
+          element: <Courses></Courses>,
+          loader: ({ params }) =>
+            fetch(
+              `https://assignment10-server-rose.vercel.app/courses/categories/${params.id}`
+            ),
         },
       ],
     },

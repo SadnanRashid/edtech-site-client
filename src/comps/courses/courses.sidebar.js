@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
+import { Link, useLoaderData } from "react-router-dom";
 
 export default function CoursesSidebar() {
   return (
@@ -32,19 +33,46 @@ function CoursesSidebarSearch() {
 }
 
 function CoursesSidebarCategories() {
-  const [cat, setCat] = useState([]);
+  //Load all categories
+  const [courseData, setCourseData] = useState([]);
+  let cData = [];
+  // Cannot use useState for slow loading on server. Research and try fixing this issue later look.later
 
   useEffect(() => {
-    fetch("http://localhost:4000/courses/categories/")
+    fetch("https://assignment10-server-rose.vercel.app/courses/categories")
       .then((res) => res.json())
-      .then((data) => setCat(data))
-      .catch((e) => console.log(e));
-
-    console.log(cat);
+      .then((data) => {
+        cData = data;
+        console.log(cData);
+        setCourseData(cData);
+      });
   }, []);
+  // End of load all categories
+
   return (
     <div>
       <h4 className="mb-3">Categories: </h4>
+      <div>
+        {courseData.map((e) => {
+          return (
+            <div className="mt-3" key={e.id}>
+              {
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "gray",
+                    fontWeight: 600,
+                    fontFamily: "monospace",
+                  }}
+                  to={`/courses/${e.id}`}
+                >
+                  {e.name}
+                </Link>
+              }
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

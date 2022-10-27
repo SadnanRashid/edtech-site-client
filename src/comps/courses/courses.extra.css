@@ -11,6 +11,6 @@
   border: none;
 }
 
-/* .input-search {
-  border-right: none !important;
-} */
+.cat-hover {
+  cursor: pointer;
+}
