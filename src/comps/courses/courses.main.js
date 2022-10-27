@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { VscFeedback, VscStarFull, VscSymbolKey } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 
 export default function CoursesMain() {
   const { id } = useParams();
@@ -14,7 +15,6 @@ export default function CoursesMain() {
         <h6>{data.length} Courses Found</h6>
         <CourseMainSort />
       </div>
-      <h2>Main section</h2>
       <div className="d-flex flex-row flex-wrap">
         {data.map((e) => {
           return (
@@ -22,7 +22,12 @@ export default function CoursesMain() {
               <img src={e.image} className="card-img-top courses-card-img" />
               <div className="card-body">
                 <h5 className="card-title font-roboto font-res-big">
-                  {e.title}
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to={`/courses/product/${e.id}`}
+                  >
+                    {e.title}
+                  </Link>
                 </h5>
                 <div className="d-flex flex-row justify-content-between card-middle">
                   <p className="font-res-small text-muted fw-bold">

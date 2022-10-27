@@ -8,6 +8,7 @@ import Login from "./comps/login/Login";
 import Register from "./comps/register/Register";
 import Courses from "./comps/courses/courses";
 import CourseDetails from "./comps/courses/CourseDetails/CourseDetails";
+import Checkout from "./comps/checkout/checkout";
 
 function App() {
   const router = createBrowserRouter([
@@ -43,6 +44,14 @@ function App() {
         },
         {
           path: "/courses/product/:id",
+          element: <CourseDetails></CourseDetails>,
+          loader: ({ params }) =>
+            fetch(
+              `https://assignment10-server-rose.vercel.app/courses/get/${params.id}`
+            ),
+        },
+        {
+          path: "/checkout/:id",
           element: <CourseDetails></CourseDetails>,
           loader: ({ params }) =>
             fetch(
