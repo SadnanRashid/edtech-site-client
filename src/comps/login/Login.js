@@ -7,6 +7,7 @@ import { auth } from "../../firebase/firebase.config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider } from "firebase/auth";
 // Icons:
 import { BsGoogle, BsGithub } from "react-icons/bs";
 
@@ -56,6 +57,25 @@ export default function Login() {
         setError(errorMessageG);
       });
   }
+
+  // github signin function
+  function GithubSignIn() {
+    const provider = new GithubAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GithubAuthProvider.credentialFromError(error);
+        setError(errorMessage);
+      });
+  }
   // End of signin functions
 
   return (
@@ -76,6 +96,7 @@ export default function Login() {
                 <button
                   type="button"
                   className="btn btn-primary btn-floating mx-1"
+                  onClick={GithubSignIn}
                 >
                   <BsGithub />
                 </button>
