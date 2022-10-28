@@ -53,7 +53,6 @@ export default function Navbar() {
               <a className="nav-link text-dark " aria-current="page" href="#">
                 FAQ
               </a>
-              <button onClick={logout}>Logout</button>
             </li>
             <li className="nav-item me-5">
               <div className="d-flex flex-row mt-2">
@@ -81,14 +80,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
-
-function logout() {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-    })
-    .catch((error) => {
-      // An error happened.
-    });
 }
