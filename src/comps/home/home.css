@@ -1,0 +1,13 @@
+.home-img {
+  background-image: url("../../media/back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+}
+
+.home-top-text {
+  width: 30%;
+  padding-top: 10%;
+  padding-left: 5%;
+}

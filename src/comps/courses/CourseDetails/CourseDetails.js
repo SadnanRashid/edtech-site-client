@@ -8,6 +8,7 @@ import {
   BsFillClockFill,
   BsDownload,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export default function CourseDetails() {
   const data = useLoaderData();
@@ -22,6 +23,14 @@ export default function CourseDetails() {
             <h4>{data.title}</h4>
             <button className="btn btn-outline-dark ms-5">
               <BsDownload />
+            </button>
+            <button className="btn btn-outline-dark ms-5">
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to={`/checkout/${data.id}`}
+              >
+                Buy Premium
+              </Link>
             </button>
           </div>
           <p className="font-res-small">{data.description.slice(0, 100)}...</p>

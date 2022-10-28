@@ -1,31 +1,62 @@
 import React from "react";
 import "./login.css";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/context";
 import { auth } from "../../firebase/firebase.config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 // Icons:
 import { BsGoogle, BsGithub } from "react-icons/bs";
 
 export default function Login() {
-  const { user } = useContext(AuthContext);
-
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-
   // for navigation
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  // end of navigation
 
-  if (user) {
-    navigate("/");
-    // return (
-    //   <h1 className="text-center mt-5 mb-5">
-    //     Already signed in. Redirecting to home
-    //   </h1>
-    // );
+  const { user, loading } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [error, setError] = useState("");
+
+  // signin functions
+  // email auth:
+  function signIn(email, password) {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("signed in with", user.email);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
   }
+  //
+  // Google signin:
+  function GoogleSignin() {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessageG = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        setError(errorMessageG);
+      });
+  }
+  // End of signin functions
 
   return (
     <section className="login-margin">
@@ -38,6 +69,7 @@ export default function Login() {
                 <button
                   type="button"
                   className="btn btn-primary btn-floating mx-1"
+                  onClick={GoogleSignin}
                 >
                   <BsGoogle />
                 </button>
@@ -109,6 +141,7 @@ export default function Login() {
                 >
                   Login
                 </button>
+                <h5 className="text-danger">{error}</h5>
                 <p className="small fw-bold mt-2 pt-1 mb-0">
                   Don't have an account? <Link to="/register">Register</Link>
                 </p>
@@ -122,17 +155,3 @@ export default function Login() {
 }
 
 // Signin function. Move later?
-function signIn(email, password) {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log("signed in with", user.email);
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      document.getElementById("sign-in-error").innerText = error.message;
-    });
-}

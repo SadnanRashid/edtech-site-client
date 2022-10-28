@@ -14,7 +14,6 @@ export default function Register() {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, name, photo, password);
     // include a function to check these params
     // search.later
     signUpWithEmailAndPassword(auth, email, password, photo, name);
@@ -112,6 +111,7 @@ export default function Register() {
           Submit
         </button>
       </form>
+      <h4>{error}</h4>
     </div>
   );
 }

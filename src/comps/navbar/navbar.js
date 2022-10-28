@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/context";
 import { LoggedIn, NotLoggedIn } from "./user.validation";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase.config";
 
 export default function Navbar() {
   const { user } = useContext(AuthContext);
@@ -38,14 +40,20 @@ export default function Navbar() {
               </p>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-dark " aria-current="page" href="#">
-                Blog
-              </a>
+              <p className="nav-link text-dark ">
+                <Link
+                  to="/blogs"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  Blog
+                </Link>
+              </p>
             </li>
             <li className="nav-item">
               <a className="nav-link text-dark " aria-current="page" href="#">
                 FAQ
               </a>
+              <button onClick={logout}>Logout</button>
             </li>
             <li className="nav-item me-5">
               <div className="d-flex flex-row mt-2">
@@ -73,4 +81,14 @@ export default function Navbar() {
       </div>
     </nav>
   );
+}
+
+function logout() {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+    })
+    .catch((error) => {
+      // An error happened.
+    });
 }

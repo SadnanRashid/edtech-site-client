@@ -9,6 +9,9 @@ import Register from "./comps/register/Register";
 import Courses from "./comps/courses/courses";
 import CourseDetails from "./comps/courses/CourseDetails/CourseDetails";
 import Checkout from "./comps/checkout/checkout";
+import PrivateRoute from "./privateRoute/privateroute";
+import Blogs from "./comps/blogs/blogs";
+import Error404 from "./comps/404/error404";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +26,14 @@ function App() {
         {
           path: "/login",
           element: <Login></Login>,
+        },
+        {
+          path: "*",
+          element: <Error404></Error404>,
+        },
+        {
+          path: "/blogs",
+          element: <Blogs></Blogs>,
         },
         {
           path: "/register",
@@ -52,7 +63,11 @@ function App() {
         },
         {
           path: "/checkout/:id",
-          element: <Checkout></Checkout>,
+          element: (
+            <PrivateRoute>
+              <Checkout></Checkout>
+            </PrivateRoute>
+          ),
           loader: ({ params }) =>
             fetch(
               `https://assignment10-server-rose.vercel.app/courses/get/${params.id}`
