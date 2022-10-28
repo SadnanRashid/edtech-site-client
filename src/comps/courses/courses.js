@@ -9,7 +9,7 @@ export default function Courses() {
   return (
     <div>
       <CoursesBreadcrumbs />
-      <div className="courses-body d-flex flex-row">
+      <div className="courses-body d-flex flex-row mobile-display">
         <div className="courses-sidebar">
           <CoursesSidebar />
         </div>

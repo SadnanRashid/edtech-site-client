@@ -21,3 +21,22 @@
 .courses-card-img {
   height: 170px;
 }
+
+@media only screen and (max-width: 600px) {
+  .mobile-display {
+    display: flex;
+    flex-direction: column !important;
+  }
+  .courses-sidebar {
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: 15%;
+  }
+  .courses-main {
+    width: 100%;
+  }
+  .courses-card {
+    width: 100%;
+    margin-bottom: -5px !important;
+  }
+}

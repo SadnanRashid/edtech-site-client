@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 export default function CourseDetails() {
   const data = useLoaderData();
   const descLen = data.description.length;
-  console.log(descLen);
   return (
     <div>
       <CoursesDetailsBreadcrumbs />
@@ -21,17 +20,19 @@ export default function CourseDetails() {
         <div>
           <div className="d-flex flex-row">
             <h4>{data.title}</h4>
-            <button className="btn btn-outline-dark ms-5">
-              <BsDownload />
-            </button>
-            <button className="btn btn-outline-dark ms-5">
-              <Link
-                style={{ textDecoration: "none", color: "black" }}
-                to={`/checkout/${data.id}`}
-              >
-                Buy Premium
-              </Link>
-            </button>
+            <div className="mobile-btn-view">
+              <button className="btn btn-outline-dark ms-5 mobile-btn-p">
+                <BsDownload />
+              </button>
+              <button className="btn btn-outline-dark ms-2 mobile-btn-p">
+                <Link
+                  style={{ textDecoration: "none", color: "black" }}
+                  to={`/checkout/${data.id}`}
+                >
+                  Buy Premium
+                </Link>
+              </button>
+            </div>
           </div>
           <p className="font-res-small">{data.description.slice(0, 100)}...</p>
           <div className="d-flex flex-row">

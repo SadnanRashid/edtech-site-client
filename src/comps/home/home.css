@@ -1,13 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
 .home-img {
-  background-image: url("../../media/back.jpg");
+  background-image: linear-gradient(
+      45deg,
+      rgba(208, 71, 206, 0.454) 0%,
+      rgba(219, 66, 135, 0.452) 45%,
+      rgba(161, 11, 121, 0.272) 99%
+    ),
+    url("../../media/banner-bg-2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   width: 100%;
-  height: 500px;
+  height: 800px;
 }
 
 .home-top-text {
-  width: 30%;
-  padding-top: 10%;
+  width: 100%;
   padding-left: 5%;
+}
+
+.font-huge {
+  font-size: 13vh;
+}
+
+.font-os {
+  font-family: "Oswald", sans-serif;
+}
+
+.logo-middle {
+  padding-top: 15%;
+  width: 40%;
+  margin-left: 30%;
+}
+
+.home-middle-dets {
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 600px;
+  }
+  .font-huge {
+    font-size: 12vh;
+  }
+  .logo-middle {
+    padding-top: 30%;
+    width: 80%;
+    margin-left: 10%;
+  }
 }

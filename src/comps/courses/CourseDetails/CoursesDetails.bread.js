@@ -5,7 +5,7 @@ import { Link, useLoaderData } from "react-router-dom";
 export default function CoursesDetailsBreadcrumbs() {
   const { title } = useLoaderData();
   return (
-    <div className="courses-bread" aria-label="breadcrumb">
+    <div className="courses-bread courses-bread-mobile" aria-label="breadcrumb">
       <ol className="breadcrumb margin-bread">
         <li className="breadcrumb-item mt-2">
           <p>
