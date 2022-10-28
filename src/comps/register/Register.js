@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 import { updateUserProfile } from "./Register.function";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   //
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,6 +33,7 @@ export default function Register() {
         console.log(user);
         setError(""); //Edit later
         updateUserProfile(auth, profileData);
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;

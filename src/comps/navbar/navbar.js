@@ -81,3 +81,14 @@ export default function Navbar() {
     </nav>
   );
 }
+
+// logout function for testing only
+function logout() {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+    })
+    .catch((error) => {
+      // An error happened.
+    });
+}

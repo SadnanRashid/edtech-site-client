@@ -42,7 +42,7 @@ export default function CourseDetails() {
             </p>
             <p className="text-primary ms-5">
               <BsFillCartCheckFill />
-              <span className="ms-2 text-dark">{data.sale}</span>
+              <span className="ms-2 text-dark">{data.price} tk</span>
             </p>
             <p className="text-success ms-5">
               <BsFillClockFill />
