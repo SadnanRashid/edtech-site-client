@@ -28,7 +28,7 @@ export default function Login() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("signed in with", user.email);
+        // console.log("signed in with", user.email);
         navigate(from, { replace: true });
       })
       .catch((error) => {

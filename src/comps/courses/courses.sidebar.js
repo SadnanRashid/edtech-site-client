@@ -43,7 +43,6 @@ function CoursesSidebarCategories() {
       .then((res) => res.json())
       .then((data) => {
         cData = data;
-        console.log(cData);
         setCourseData(cData);
       });
   }, []);

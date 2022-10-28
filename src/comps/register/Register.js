@@ -30,7 +30,7 @@ export default function Register() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         setError(""); //Edit later
         updateUserProfile(auth, profileData);
         navigate("/");
@@ -38,7 +38,7 @@ export default function Register() {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage, errorCode);
+        // console.log(errorMessage, errorCode);
         setError(errorMessage);
       });
   };
@@ -105,9 +105,10 @@ export default function Register() {
             type="checkbox"
             className="form-check-input"
             id="exampleCheck1"
+            required
           />
           <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
+            I accept terms and services
           </label>
         </div>
         <button type="submit" className="btn btn-primary mt-2">
