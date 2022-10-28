@@ -9,8 +9,13 @@ import {
   BsDownload,
 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+// import for react-pdf
+import Pdf from "react-to-pdf";
 
 export default function CourseDetails() {
+  // for react-pdf
+  const ref = React.createRef();
+  //
   const data = useLoaderData();
   const descLen = data.description.length;
   return (
@@ -21,9 +26,16 @@ export default function CourseDetails() {
           <div className="d-flex flex-row">
             <h4>{data.title}</h4>
             <div className="mobile-btn-view">
-              <button className="btn btn-outline-dark ms-5 mobile-btn-p">
-                <BsDownload />
-              </button>
+              <Pdf targetRef={ref} filename="course-details-courseplus.pdf">
+                {({ toPdf }) => (
+                  <button
+                    onClick={toPdf}
+                    className="btn btn-outline-dark ms-5 mobile-btn-p"
+                  >
+                    <BsDownload />
+                  </button>
+                )}
+              </Pdf>
               <button className="btn btn-outline-dark ms-2 mobile-btn-p">
                 <Link
                   style={{ textDecoration: "none", color: "black" }}
@@ -57,7 +69,8 @@ export default function CourseDetails() {
           </div>
           <hr />
           {/* Course image and description */}
-          <div className="course-details-overview">
+
+          <div className="course-details-overview w-100" ref={ref}>
             <img src={data.image} className="course-details-image" />
             <div className="p-3 course-details-overview-desc mt-3">
               <p className="font-res-small">{data.description.slice(0, 300)}</p>
